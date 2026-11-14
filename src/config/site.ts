@@ -62,7 +62,7 @@ export const PACKS: Pack[] = [
       fr: ["Recettes rapides du quotidien", "Ingrédients faciles à trouver", "Parfait pour débuter"],
       en: ["Quick everyday recipes", "Easy-to-find ingredients", "Perfect to get started"],
     },
-    cta: { fr: "🍗 Je veux mes recettes !", en: "🍗 I want my recipes!" },
+    cta: { fr: "🍳 Prendre mes recettes", en: "🍳 Grab my recipes" },
   },
   {
     id: "pack-40", count: 40, price: "19,85 $", basePrice: 19.85,
@@ -80,7 +80,7 @@ export const PACKS: Pack[] = [
       fr: ["Deux fois plus d'idées", "Plats familiaux & desserts", "Pour varier les repas"],
       en: ["Twice as many ideas", "Family meals & desserts", "More variety every day"],
     },
-    cta: { fr: "❤️ Obtenir mes recettes", en: "❤️ Get my recipes" },
+    cta: { fr: "🧁 Récupérer mes recettes", en: "🧁 Get my recipes" },
   },
   {
     id: "pack-60", count: 60, price: "22,99 $", basePrice: 22.99, featured: true,
@@ -98,7 +98,7 @@ export const PACKS: Pack[] = [
       fr: ["La collection la plus complète", "Recettes raffinées & festives", "Des mois d'inspiration"],
       en: ["The most complete collection", "Refined & festive recipes", "Months of inspiration"],
     },
-    cta: { fr: "🍳 Je récupère mon e-book", en: "🍳 Grab my e-book" },
+    cta: { fr: "👨‍🍳 Je passe en cuisine", en: "👨‍🍳 Let's get cooking" },
   },
 ];
 

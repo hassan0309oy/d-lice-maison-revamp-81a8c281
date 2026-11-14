@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Zap, ShieldCheck, Search, Heart, ChevronDown, ArrowRight, ArrowUp, Star, Gift, CircleHelp, PlayCircle, ChefHat, ClipboardCheck, Mail, Smartphone, Headphones, Plus } from "lucide-react";
+import { Zap, ShieldCheck, Search, Heart, ChevronDown, ArrowRight, ArrowUp, Star, Gift, CircleHelp, PlayCircle, ChefHat, ClipboardCheck, Mail, Smartphone, Headphones, Plus, BookOpen } from "lucide-react";
 import hero from "@/assets/hero-plate-ref.jpg";
+import bookFr from "@/assets/preview-book-fr.jpg";
+import bookEn from "@/assets/preview-book-en.jpg";
 import { LANG_KEY, LOGO_URL, PACKS, TESTIMONIALS, VIDEOS, type Lang } from "@/config/site";
 import { FinalOffer, OfferModal, PackLabel, TimerBar, gift } from "@/components/BlackFriday";
 import { money, packPrice, promotionActive } from "@/lib/shop-rules";
@@ -30,7 +32,7 @@ const X = {
     ],
     whyTitle: "Pourquoi Choisir Délices Maison ?", why: ["Recettes testées et approuvées", "Accès immédiat après achat", "Compatible sur tous vos appareils", "Support client réactif"],
     readyTitle: "Prêt à régaler toute votre famille ?", readySub: "Rejoignez des milliers de passionnés de cuisine dès aujourd'hui !", readyCta: "Découvrir nos packs",
-    rights: "Tous droits réservés.", top: "Retour en haut", more: "Voir plus", less: "Voir moins", prev: "Précédent", next: "Suivant",
+    rights: "Tous droits réservés.", top: "Retour en haut", previewTitle: "Aperçu des E-books", previewSub: "Feuilletez une recette avant de craquer", previewNote: "Chaque recette tient sur deux pages : la présentation et les ingrédients, puis la préparation pas à pas.", more: "Voir plus", less: "Voir moins", prev: "Précédent", next: "Suivant",
   },
   en: {
     nav: ["Home", "Recipes", "Reviews", "FAQ"], pill: "Discover the joy of cooking", motto1: "Cook. Savour.", motto2: "Repeat!",
@@ -55,7 +57,7 @@ const X = {
     ],
     whyTitle: "Why Choose Délices Maison?", why: ["Tested & approved recipes", "Instant access after purchase", "Works on all your devices", "Responsive customer support"],
     readyTitle: "Ready to delight your whole family?", readySub: "Join thousands of cooking lovers today!", readyCta: "Discover our packs",
-    rights: "All rights reserved.", top: "Back to top", more: "See more", less: "See less", prev: "Previous", next: "Next",
+    rights: "All rights reserved.", top: "Back to top", previewTitle: "E-book Preview", previewSub: "Flip through a recipe before you treat yourself", previewNote: "Each recipe fits on two pages: the presentation and ingredients, then the step-by-step method.", more: "See more", less: "See less", prev: "Previous", next: "Next",
   },
 };
 
@@ -216,16 +218,25 @@ export function Shop({ lang }: { lang: Lang }) {
                 <h3 className="mt-3 font-sans text-xs font-extrabold text-cocoa sm:text-lg">{x.pack} {p.count} {x.recipes}</h3>
                 <div className="my-2 h-px w-full bg-border" />
                 <div className="flex flex-wrap items-baseline justify-center gap-x-1.5">
-                  {promo && <s className="text-[0.6rem] font-semibold text-muted-foreground sm:text-sm">{money(p.basePrice, lang)}</s>}
-                  <span className="text-base font-black text-cocoa sm:text-2xl">{money(price, lang)}</span>
+                  {promo && <s className="font-price text-xs text-muted-foreground sm:text-base">{money(p.basePrice, lang)}</s>}
+                  <span className="font-price text-xl font-bold text-cocoa sm:text-3xl">{money(price, lang)}</span>
                 </div>
-                <a href={p.link[lang]} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex w-full items-center justify-center gap-1 rounded-full bg-sun px-1.5 py-2 text-[0.6rem] font-extrabold text-cocoa shadow-soft transition hover:scale-105 sm:text-sm">{x.buy} <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" /></a>
+                <a href={p.link[lang]} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex w-full items-center justify-center gap-1 rounded-full bg-sun px-1.5 py-2 text-[0.6rem] font-extrabold leading-tight text-cocoa shadow-soft transition hover:scale-105 sm:text-sm">{p.cta[lang]}</a>
               </article>
             );
           })}
         </div>
         <div className="mx-auto mt-6 max-w-3xl px-4">
           <p className="flex items-center gap-3 rounded-2xl bg-secondary px-5 py-4 text-sm font-semibold text-cocoa shadow-soft"><Star className="h-6 w-6 shrink-0 fill-sun text-accent" />{x.proof}</p>
+        </div>
+      </section>
+
+      {/* PREVIEW */}
+      <section id="apercu" className="reveal mt-14 scroll-mt-24">
+        <Title icon={BookOpen} sub={x.previewSub}>{x.previewTitle}</Title>
+        <div className="mx-auto mt-6 max-w-4xl px-3">
+          <img src={lang === "fr" ? bookFr : bookEn} alt={x.previewTitle} width={1600} height={1180} loading="lazy" className="w-full rounded-2xl" />
+          <p className="mt-2 text-center text-xs font-semibold text-cocoa/70 sm:text-sm">{x.previewNote}</p>
         </div>
       </section>
 
